@@ -1,0 +1,75 @@
+name: Update APT repository
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      keep_releases:
+        description: "Number of versions to publish"
+        required: false
+        default: "5"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "templates/**"
+      - ".github/workflows/update-repo.yml"
+
+concurrency:
+  group: update-repo
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends dpkg-dev apt-utils
+
+      - name: Import signing key
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+        run: |
+          if [ -z "$GPG_PRIVATE_KEY" ]; then
+            echo "::error::Missing GPG_PRIVATE_KEY secret. Run the 'Bootstrap signing key' workflow first."
+            exit 1
+          fi
+          printf '%s' "$GPG_PRIVATE_KEY" | gpg --batch --import
+          gpg --list-secret-keys --with-colons \
+            | awk -F: '/^fpr:/{print $10":6:"}' \
+            | gpg --batch --import-ownertrust
+
+      - name: Build repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          KEEP_RELEASES: ${{ github.event.inputs.keep_releases || '5' }}
+          REPO_URL: ${{ vars.REPO_URL }}
+        run: bash scripts/build-repo.sh
+
+      - name: Verify signatures
+        run: |
+          gpg --verify public/dists/stable/InRelease
+          gpg --verify public/dists/stable/Release.gpg public/dists/stable/Release
+
+      - name: Publish changes
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public metadata
+          if git diff --cached --quiet; then
+            echo "No changes: the repository is already up to date."
+            exit 0
+          fi
+          version="$(awk '/^Version: /{print $2; exit}' \
+            public/dists/stable/main/binary-amd64/Packages)"
+          git commit -m "repo: publish helium-bin ${version}"
+          git push

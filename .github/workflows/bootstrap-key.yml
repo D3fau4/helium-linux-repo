@@ -1,0 +1,58 @@
+name: Bootstrap signing key
+
+on:
+  workflow_dispatch:
+    inputs:
+      rotate:
+        description: "Replace an existing key (breaks installed clients until they refetch it)"
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for an existing key
+        env:
+          GH_TOKEN: ${{ secrets.BOOTSTRAP_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::Missing BOOTSTRAP_TOKEN secret (fine-grained PAT with Secrets and Actions read/write)"
+            exit 1
+          fi
+          if gh secret list | grep -q '^GPG_PRIVATE_KEY'; then
+            if [ "${{ inputs.rotate }}" != "true" ]; then
+              echo "::error::GPG_PRIVATE_KEY already exists. Re-run with rotate=true to replace it."
+              exit 1
+            fi
+            echo "::warning::Rotating the signing key. Clients must refetch the public key."
+          fi
+
+      - name: Generate and store the key
+        env:
+          GH_TOKEN: ${{ secrets.BOOTSTRAP_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          export GNUPGHOME="$(mktemp -d)"
+          chmod 700 "$GNUPGHOME"
+          gpg --batch --quiet --pinentry-mode loopback --passphrase '' \
+            --quick-generate-key "Helium APT Repo" ed25519 sign never
+          fpr="$(gpg --list-secret-keys --with-colons | awk -F: '/^fpr:/{print $10; exit}')"
+          gpg --export-secret-keys --armor "$fpr" > "$GNUPGHOME/private.asc"
+          gh secret set GPG_PRIVATE_KEY < "$GNUPGHOME/private.asc"
+          shred -u "$GNUPGHOME/private.asc"
+          rm -rf "$GNUPGHOME"
+          echo "Signing key stored. Fingerprint: $fpr" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Build and publish the repository
+        env:
+          GH_TOKEN: ${{ secrets.BOOTSTRAP_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh workflow run update-repo.yml \
+            || echo "::warning::Could not trigger update-repo. Run it manually from the Actions tab."

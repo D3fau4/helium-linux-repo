@@ -1,0 +1,5 @@
+*.deb
+*.tmp
+*.asc
+*.key
+secring.*

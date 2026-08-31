@@ -1,2 +1,7 @@
-# Auto detect text files and perform LF normalization
 * text=auto
+
+*.gpg              binary
+*.gz               binary
+public/_redirects  -text
+public/dists/**    -text
+metadata/**        -text

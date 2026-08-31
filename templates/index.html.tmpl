@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Helium APT Repository</title>
+<meta name="description" content="Unofficial APT repository serving the Helium .deb packages, so you can install and update the browser with apt.">
+<style>
+  :root {
+    --bg: #fbfbfd; --panel: #ffffff; --border: #e3e3e8; --fg: #16161a;
+    --muted: #6b6b76; --accent: #3b5bdb; --code-bg: #f4f4f7; --shadow: 0 1px 2px rgba(0,0,0,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111114; --panel: #18181c; --border: #2a2a31; --fg: #e9e9ee;
+      --muted: #9a9aa6; --accent: #8ea3f5; --code-bg: #0d0d10; --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 46rem; margin: 0 auto; padding: 3.5rem 1.25rem 5rem; }
+  h1 { font-size: 1.9rem; letter-spacing: -.02em; margin: 0 0 .35rem; }
+  h2 { font-size: 1.05rem; letter-spacing: -.01em; margin: 2.75rem 0 .75rem; }
+  h3 { font-size: .9rem; font-weight: 600; color: var(--muted); margin: 1.5rem 0 .5rem; }
+  p  { margin: 0 0 1rem; }
+  a  { color: var(--accent); }
+  .lede { color: var(--muted); margin-bottom: 1.75rem; }
+  .badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
+  .badge {
+    display: inline-flex; align-items: baseline; gap: .4rem;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 999px;
+    padding: .3rem .8rem; font-size: .82rem; box-shadow: var(--shadow);
+  }
+  .badge b { font-variant-numeric: tabular-nums; }
+  .badge span { color: var(--muted); }
+  .cmd { position: relative; margin: 0 0 1rem; }
+  .cmd pre {
+    margin: 0; background: var(--code-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: .9rem 3.25rem .9rem 1rem;
+    overflow-x: auto; font: .84rem/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .cmd button {
+    position: absolute; top: .5rem; right: .5rem;
+    background: var(--panel); color: var(--muted);
+    border: 1px solid var(--border); border-radius: 7px;
+    padding: .3rem .55rem; font: inherit; font-size: .72rem; cursor: pointer;
+  }
+  .cmd button:hover { color: var(--fg); }
+  .cmd button.done { color: var(--accent); border-color: var(--accent); }
+  code:not(pre code) {
+    background: var(--code-bg); border: 1px solid var(--border);
+    border-radius: 5px; padding: .1em .35em; font-size: .86em;
+  }
+  .note {
+    border-left: 3px solid var(--border); padding: .1rem 0 .1rem 1rem;
+    color: var(--muted); font-size: .9rem; margin: 1.25rem 0;
+  }
+  footer {
+    margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: .82rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Helium APT Repository</h1>
+  <p class="lede">Install <a href="https://helium.computer">Helium</a> and keep it up to date with <code>apt</code>, instead of downloading the <code>.deb</code> by hand on every release.</p>
+
+  <div class="badges">
+    <span class="badge"><span>version</span> <b>{{VERSION}}</b></span>
+    <span class="badge"><span>package</span> <b>{{PACKAGE}}</b></span>
+    <span class="badge"><span>architectures</span> <b>{{ARCHES}}</b></span>
+    <span class="badge"><span>updated</span> <b>{{UPDATED}}</b></span>
+  </div>
+
+  <h2>Install</h2>
+  <p>Copy the whole block and paste it into a terminal:</p>
+  <div class="cmd">
+<pre><code>sudo install -d -m 0755 /etc/apt/keyrings
+sudo curl -fsSL {{REPO_URL}}/{{KEYRING_NAME}} -o /etc/apt/keyrings/{{KEYRING_NAME}}
+echo "deb [signed-by=/etc/apt/keyrings/{{KEYRING_NAME}}] {{REPO_URL}} {{SUITE}} {{COMPONENT}}" \
+  | sudo tee /etc/apt/sources.list.d/helium-linux.list
+sudo apt update
+sudo apt install {{PACKAGE}}</code></pre>
+  </div>
+
+  <h3>deb822 alternative</h3>
+  <p>For the modern format (Debian 12+, Ubuntu 24.04+, Linux Mint 22+):</p>
+  <div class="cmd">
+<pre><code>sudo install -d -m 0755 /etc/apt/keyrings
+sudo curl -fsSL {{REPO_URL}}/{{KEYRING_NAME}} -o /etc/apt/keyrings/{{KEYRING_NAME}}
+sudo tee /etc/apt/sources.list.d/helium-linux.sources &gt;/dev/null &lt;&lt;'EOF'
+Types: deb
+URIs: {{REPO_URL}}
+Suites: {{SUITE}}
+Components: {{COMPONENT}}
+Architectures: {{ARCHES}}
+Signed-By: /etc/apt/keyrings/{{KEYRING_NAME}}
+EOF
+sudo apt update &amp;&amp; sudo apt install {{PACKAGE}}</code></pre>
+  </div>
+
+  <h2>Update</h2>
+  <p>Nothing special from here on: Helium updates along with the rest of the system.</p>
+  <div class="cmd">
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade</code></pre>
+  </div>
+
+  <h2>Uninstall</h2>
+  <div class="cmd">
+<pre><code>sudo apt remove {{PACKAGE}}
+sudo rm -f /etc/apt/sources.list.d/helium-linux.list \
+           /etc/apt/sources.list.d/helium-linux.sources \
+           /etc/apt/keyrings/{{KEYRING_NAME}}
+sudo apt update</code></pre>
+  </div>
+
+  <h2>How it works</h2>
+  <p>Helium's <code>.deb</code> packages are around 130&nbsp;MB, so this site <strong>does not host them</strong>. It publishes only the signed APT metadata (<code>Packages</code>, <code>Release</code>, <code>InRelease</code>) and redirects the pool paths to the original assets on <a href="https://github.com/{{UPSTREAM_REPO}}/releases">GitHub Releases</a>.</p>
+  <p>What you install is <strong>exactly</strong> what the project ships: apt checks each package's <code>SHA256</code> against the one in the signed metadata, so the redirect does not weaken verification.</p>
+  <h2>Disclaimer</h2>
+  <p class="note">Built with AI, for personal use only. No guarantee is made that it works, that it stays up to date, or that it is safe to rely on &mdash; use it at your own risk. <strong>Prefer the official sources:</strong> <a href="https://github.com/{{UPSTREAM_REPO}}/releases">GitHub Releases</a> and <a href="https://helium.computer">helium.computer</a>. Not affiliated with, endorsed by, or supported by the Helium project.</p>
+
+  <h3>Inspect the signing key</h3>
+  <div class="cmd">
+<pre><code>curl -fsSL {{REPO_URL}}/{{KEYRING_NAME}} | gpg --show-keys</code></pre>
+  </div>
+
+  <footer>
+    Current version: <b>{{VERSION}}</b> (release <a href="https://github.com/{{UPSTREAM_REPO}}/releases/tag/{{TAG}}">{{TAG}}</a>) · Metadata regenerated on {{UPDATED}}.
+  </footer>
+</main>
+<script>
+document.querySelectorAll('.cmd').forEach(function (box) {
+  var pre = box.querySelector('pre');
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.textContent = 'copy';
+  btn.addEventListener('click', function () {
+    navigator.clipboard.writeText(pre.innerText).then(function () {
+      btn.textContent = 'copied';
+      btn.classList.add('done');
+      setTimeout(function () { btn.textContent = 'copy'; btn.classList.remove('done'); }, 1600);
+    });
+  });
+  box.appendChild(btn);
+});
+</script>
+</body>
+</html>
