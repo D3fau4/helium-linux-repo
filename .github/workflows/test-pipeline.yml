@@ -1,0 +1,73 @@
+name: TEMP pipeline test
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: update-repo
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends dpkg-dev apt-utils
+
+      - name: Generate an ephemeral signing key
+        run: |
+          export GNUPGHOME="$RUNNER_TEMP/gnupg"
+          mkdir -p "$GNUPGHOME"; chmod 700 "$GNUPGHOME"
+          echo "GNUPGHOME=$GNUPGHOME" >> "$GITHUB_ENV"
+          gpg --batch --quiet --pinentry-mode loopback --passphrase '' \
+            --quick-generate-key "Helium APT Repo" ed25519 sign never
+          gpg --list-secret-keys --with-colons | awk -F: '/^fpr:/{print $10; exit}'
+
+      - name: Build repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash scripts/build-repo.sh
+
+      - name: Verify signatures
+        run: |
+          gpg --verify public/dists/stable/InRelease
+          gpg --verify public/dists/stable/Release.gpg public/dists/stable/Release
+
+      - name: Verify with a real apt client
+        run: |
+          root="$RUNNER_TEMP/aptroot"
+          mkdir -p "$root"/etc/apt/{sources.list.d,preferences.d,trusted.gpg.d} \
+                   "$root"/var/lib/apt/lists/partial \
+                   "$root"/var/cache/apt/archives/partial "$root"/var/lib/dpkg
+          touch "$root/var/lib/dpkg/status"
+          cp public/helium-linux.gpg "$root/etc/apt/trusted.gpg.d/"
+          echo "deb [signed-by=$root/etc/apt/trusted.gpg.d/helium-linux.gpg] http://127.0.0.1:8731 stable main" \
+            > "$root/etc/apt/sources.list.d/helium.list"
+          python3 -m http.server 8731 -d public --bind 127.0.0.1 &
+          curl -s --retry 10 --retry-delay 1 --retry-connrefused -o /dev/null http://127.0.0.1:8731/index.html
+          opts=(-o Dir::Etc::sourcelist="" -o Dir::Etc::sourceparts="$root/etc/apt/sources.list.d"
+                -o Dir::Etc::preferencesparts="$root/etc/apt/preferences.d"
+                -o Dir::State::lists="$root/var/lib/apt/lists" -o Dir::Cache="$root/var/cache/apt"
+                -o Dir::State::status="$root/var/lib/dpkg/status"
+                -o Dir::Etc::trusted="$root/etc/apt/trusted.gpg"
+                -o Dir::Etc::trustedparts="$root/etc/apt/trusted.gpg.d"
+                -o APT::Architecture=amd64 -o APT::Architectures::=amd64)
+          apt-get "${opts[@]}" update
+          apt-cache "${opts[@]}" policy helium-bin
+          apt-get "${opts[@]}" download --print-uris helium-bin
+
+      - name: Publish changes
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public metadata
+          git diff --cached --quiet && { echo "no changes"; exit 0; }
+          git commit -m "test: pipeline dry run"
+          git push
