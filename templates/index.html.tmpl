@@ -82,7 +82,7 @@
   <div class="cmd">
 <pre><code>sudo install -d -m 0755 /etc/apt/keyrings
 sudo curl -fsSL {{REPO_URL}}/{{KEYRING_NAME}} -o /etc/apt/keyrings/{{KEYRING_NAME}}
-echo "deb [signed-by=/etc/apt/keyrings/{{KEYRING_NAME}}] {{REPO_URL}} {{SUITE}} {{COMPONENT}}" \
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/{{KEYRING_NAME}}] {{REPO_URL}} {{SUITE}} {{COMPONENT}}" \
   | sudo tee /etc/apt/sources.list.d/helium-linux.list
 sudo apt update
 sudo apt install {{PACKAGE}}</code></pre>
@@ -93,12 +93,12 @@ sudo apt install {{PACKAGE}}</code></pre>
   <div class="cmd">
 <pre><code>sudo install -d -m 0755 /etc/apt/keyrings
 sudo curl -fsSL {{REPO_URL}}/{{KEYRING_NAME}} -o /etc/apt/keyrings/{{KEYRING_NAME}}
-sudo tee /etc/apt/sources.list.d/helium-linux.sources &gt;/dev/null &lt;&lt;'EOF'
+sudo tee /etc/apt/sources.list.d/helium-linux.sources &gt;/dev/null &lt;&lt;EOF
 Types: deb
 URIs: {{REPO_URL}}
 Suites: {{SUITE}}
 Components: {{COMPONENT}}
-Architectures: {{ARCHES}}
+Architectures: $(dpkg --print-architecture)
 Signed-By: /etc/apt/keyrings/{{KEYRING_NAME}}
 EOF
 sudo apt update &amp;&amp; sudo apt install {{PACKAGE}}</code></pre>
