@@ -1,4 +1,23 @@
 Package: helium-bin
+Version: 0.16.4.1-1
+Section: web
+Priority: optional
+Architecture: amd64
+Installed-Size: 473623
+Maintainer: imput <helium@imput.net>
+Description: Private, fast, and honest web browser
+ Private, fast, and honest web browser based on Chromium
+Homepage: https://github.com/imputnet/helium-linux
+Recommends: ca-certificates,xdg-utils,fonts-liberation,libvulkan1
+Depends: libc6,libgcc-s1,libstdc++6,fonts-noto-mono,libglib2.0-0t64,libnspr4,libnss3,libxcb1,libdbus-1-3,libatomic1,libpcre2-8-0,libxau6,libxdmcp6,libsystemd0,libcap2,libatk1.0-0t64,libatk-bridge2.0-0t64,libcups2t64,libexpat1,libxkbcommon0,libasound2t64,libgbm1,libx11-6,libxext6,libcairo2,libpango-1.0-0,libudev1,libxcomposite1,libxdamage1,libxfixes3,libxrandr2,libatspi2.0-0t64,libffi8,zlib1g,libmount1,libselinux1,libgssapi-krb5-2,libavahi-common3,libavahi-client3,libgnutls30t64,libdrm2,libpng16-16t64,libfontconfig1,libfreetype6,libxrender1,libxcb-render0,libxcb-shm0,libpixman-1-0,libfribidi0,libthai0,libharfbuzz0b,libxi6,libblkid1,libkrb5-3,libk5crypto3,libcom-err2,libkrb5support0,libp11-kit0,libidn2-0,libunistring5,libtasn1-6,libhogweed6t64,libnettle8t64,libgmp10,libbz2-1.0,libbrotli1,libdatrie1,libgraphite2-3,libkeyutils1
+Provides: www-browser
+Filename: pool/main/h/helium-bin/helium-bin_0.16.4.1-1_amd64.deb
+Size: 131239156
+MD5sum: efee71fe0a043b006254387d3f7f98ea
+SHA1: 47c131b8640bd2f69bfee9e71aae49266c8a99ca
+SHA256: 0763d27c7f666b8f93b4fb489d316e07468c147594afe8de39cb5e431b4cf27a
+
+Package: helium-bin
 Version: 0.16.3.1-1
 Section: web
 Priority: optional
@@ -73,22 +92,3 @@ Size: 130449840
 MD5sum: fe7254cbf7589b2726f54705085a309d
 SHA1: be73b0664f8b987cbf9ca6b6b0be612c306275c4
 SHA256: a6a1d5c1bbfa9ea809862a6d6ffb2989ef5895d71c03011b56de6a9b4ed8e7d9
-
-Package: helium-bin
-Version: 0.15.6.1-1
-Section: web
-Priority: optional
-Architecture: amd64
-Installed-Size: 471086
-Maintainer: imput <helium@imput.net>
-Description: Private, fast, and honest web browser
- Private, fast, and honest web browser based on Chromium
-Homepage: https://github.com/imputnet/helium-linux
-Recommends: ca-certificates,xdg-utils,fonts-liberation,libvulkan1
-Depends: libc6,libgcc-s1,libstdc++6,fonts-noto-mono,libglib2.0-0t64,libnspr4,libnss3,libxcb1,libdbus-1-3,libatomic1,libpcre2-8-0,libxau6,libxdmcp6,libsystemd0,libcap2,libatk1.0-0t64,libatk-bridge2.0-0t64,libcups2t64,libexpat1,libxkbcommon0,libasound2t64,libgbm1,libx11-6,libxext6,libcairo2,libpango-1.0-0,libudev1,libxcomposite1,libxdamage1,libxfixes3,libxrandr2,libatspi2.0-0t64,libffi8,zlib1g,libmount1,libselinux1,libgssapi-krb5-2,libavahi-common3,libavahi-client3,libgnutls30t64,libdrm2,libpng16-16t64,libfontconfig1,libfreetype6,libxrender1,libxcb-render0,libxcb-shm0,libpixman-1-0,libfribidi0,libthai0,libharfbuzz0b,libxi6,libblkid1,libkrb5-3,libk5crypto3,libcom-err2,libkrb5support0,libp11-kit0,libidn2-0,libunistring5,libtasn1-6,libhogweed6t64,libnettle8t64,libgmp10,libbz2-1.0,libbrotli1,libdatrie1,libgraphite2-3,libkeyutils1
-Provides: www-browser
-Filename: pool/main/h/helium-bin/helium-bin_0.15.6.1-1_amd64.deb
-Size: 130480848
-MD5sum: fd073efdc6232fb47c513c8a00c1f21b
-SHA1: 299aa3c3106bdceb2542b0a7c2897a1aba8f506f
-SHA256: 32743ff5bb6f13f23855ab1a991a0719ed26a2a7e3f769230fa62affc81757b3

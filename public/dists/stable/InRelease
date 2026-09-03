@@ -4,35 +4,35 @@ Hash: SHA512
 Architectures: amd64 arm64
 Codename: stable
 Components: main
-Date: Wed, 02 Sep 2026 18:15:55 +0000
+Date: Thu, 03 Sep 2026 00:33:15 +0000
 Description: Unofficial APT repository for Helium on Debian/Ubuntu
 Label: Helium Linux
 Origin: helium-linux-repo
 Suite: stable
 MD5Sum:
- e7b7a5864cb528d2672307b409f30d3d             7389 main/binary-amd64/Packages
- 51a57552afbb26d0a5270dda0e8a91b8             1347 main/binary-amd64/Packages.gz
- 1c24ba3e8d90eddda7ba880bb26188a6             3209 main/binary-arm64/Packages
- 1e0ead764e3000f0394a27d26a77eff3              897 main/binary-arm64/Packages.gz
+ 0b6462f00fb46065855cf3a4aeecfe90             7389 main/binary-amd64/Packages
+ a252f0de7a16946b9f37ae79b9fe55cf             1345 main/binary-amd64/Packages.gz
+ 6208ac9874ad4c86b6a07fb6bf48223a             3209 main/binary-arm64/Packages
+ 4eebc2c40a437ad3cfc6426318b29c2a              896 main/binary-arm64/Packages.gz
 SHA1:
- 2327a516009bdf0fd158677fc7bcc9db7ac2855f             7389 main/binary-amd64/Packages
- 020a914b3e70a4055a533e6b0d7f7f41c00e5aeb             1347 main/binary-amd64/Packages.gz
- c1ab6a5921a428ea1a08537ed3fdc69376d26617             3209 main/binary-arm64/Packages
- d4e345b33e5d96bd55dcb0418b2f493ffed781fe              897 main/binary-arm64/Packages.gz
+ 43a95c03a581765a9575fb7a4c624e8276c3b8c4             7389 main/binary-amd64/Packages
+ fd59bf03e045e51203dbe1d9f6848f88b2d1030b             1345 main/binary-amd64/Packages.gz
+ 982347df110147dc76bae3b9e446272df52de6f2             3209 main/binary-arm64/Packages
+ 2fd41e4456c63e6f47340cdf84a0ad6c03e4fa32              896 main/binary-arm64/Packages.gz
 SHA256:
- 637cf1d1f96025cc4530f67bbd5b8e9642d9fe39457d5084a52af81fff9c534d             7389 main/binary-amd64/Packages
- bc7227864cc80fbd28c25139ea22f5697024870ff12f48b051649c5e02df8c09             1347 main/binary-amd64/Packages.gz
- e56e3cfb9fb055b8d1835a6579ea8324c97f3e49716789a658a3fca417ba36f7             3209 main/binary-arm64/Packages
- 5e087cfb5827eb92b47fc9689d7e038ef057654782c4fb3ba7a886a2cccd5f49              897 main/binary-arm64/Packages.gz
+ 7e28c85e7ad4375de1c2ee612d1864f5a1d0e58bead030ee2802b28949e3b770             7389 main/binary-amd64/Packages
+ c3e3c3c8ff2d83056945c3744ebef1931ee2b8d898a97af0a68425358383a441             1345 main/binary-amd64/Packages.gz
+ d359088024cb1bacd8fc8160546282c2f405f8f570df91dfa9523b3c5a099fbe             3209 main/binary-arm64/Packages
+ 0055ca1c81944f94de66869eb22ab65875aa2ff158eae075234ea2e37dc0567e              896 main/binary-arm64/Packages.gz
 SHA512:
- e52a9438565d2c93fc9fbb237d5873508bff5711d1bbfc8f64d841f7bd99cd35cbae6d6740a07d0ebeff39aab8486a5279d52095f2844983d50c3d2a60751bb1             7389 main/binary-amd64/Packages
- 5f168f94639885bad953ef9b0b81c09020d0c177be830ab78cc704485d5479a2af1ae150916ce1f282381a556af2141867f9d45ddcae2b51917e0084301819c9             1347 main/binary-amd64/Packages.gz
- 9ac683d9cbd103586bdefad63292a3655725d502486531b4c09e9445b3de0335f9f28f368277e7a86e4b5d22b74e179d1784424872eee4f1e367baf0538c9df9             3209 main/binary-arm64/Packages
- df413d04d2175d1b4e21f9ff38a1f82077623d3998b42afff6711654d679d65146cf58d6564ccee5cdfad4f8526537208b5dc1cd57c7ddd990d85c1d4029044b              897 main/binary-arm64/Packages.gz
+ 3e341f17cfc8062f6f77b6b78df2a436482a0340467b2c3f8abac143c4fc88940ae10ca5e7fbd7987c53fd56307511e554b6d304ceb8f593b46eba669bfeda5e             7389 main/binary-amd64/Packages
+ 472498f15ebaa7d170f19964f540285db9d7bf468e1655ee530fd896186d3fb4eb8094cc5b138755e859932e9588fdc8429a4f6b20b607168f7d96a274ce725b             1345 main/binary-amd64/Packages.gz
+ 87159e94144122ecf5a73dc80eeb5f75ae5feb132efd0f858e7505fe0936798160a5300be2d7d562152961f0c1b27f19c0124839ba1ed349350aef1bb32e7df0             3209 main/binary-arm64/Packages
+ ecbb5811a9f97c877ef0366510608a7092417f57fe45d59a7f0ceae15f2f4a28237bb22e48e8dff6fc64df6a88663a8125c7bacc7e81f254da80b8b277565f56              896 main/binary-arm64/Packages.gz
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQR2OU9VKgeauHqlcxGGdS8zSia6MAUCaphn2wAKCRCGdS8zSia6
-MJq/AP9ItoPmLH7fYebfu60vy8aTo+xb6vFfd2Cc6bSb0PUX3QEA0mS2slw6CVbS
-G+lS2U4M/Z1mWIPwtUNiGo1Jgk1BbA4=
-=mXEs
+iHUEARYKAB0WIQR2OU9VKgeauHqlcxGGdS8zSia6MAUCapjASwAKCRCGdS8zSia6
+MJc6AQDi/3Bz7WSDSIrc9GQMissyW4lY0PI7jnrAH+GskW57QgD/cKaJ43lCDgEi
+qSw/r3mASxo+tnpsOucFXPvFwl+V+Qg=
+=UkCQ
 -----END PGP SIGNATURE-----

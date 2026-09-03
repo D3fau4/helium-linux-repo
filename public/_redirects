@@ -1,3 +1,5 @@
+/pool/main/h/helium-bin/helium-bin_0.16.4.1-1_amd64.deb https://github.com/imputnet/helium-linux/releases/download/0.16.4.1/helium-bin_0.16.4.1-1_amd64.deb 302
+/pool/main/h/helium-bin/helium-bin_0.16.4.1-1_arm64.deb https://github.com/imputnet/helium-linux/releases/download/0.16.4.1/helium-bin_0.16.4.1-1_arm64.deb 302
 /pool/main/h/helium-bin/helium-bin_0.16.3.1-1_amd64.deb https://github.com/imputnet/helium-linux/releases/download/0.16.3.1/helium-bin_0.16.3.1-1_amd64.deb 302
 /pool/main/h/helium-bin/helium-bin_0.16.3.1-1_arm64.deb https://github.com/imputnet/helium-linux/releases/download/0.16.3.1/helium-bin_0.16.3.1-1_arm64.deb 302
 /pool/main/h/helium-bin/helium-bin_0.16.2.1-1_amd64.deb https://github.com/imputnet/helium-linux/releases/download/0.16.2.1/helium-bin_0.16.2.1-1_amd64.deb 302
@@ -6,5 +8,3 @@
 /pool/main/h/helium-bin/helium-bin_0.16.1.1-1_arm64.deb https://github.com/imputnet/helium-linux/releases/download/0.16.1.1/helium-bin_0.16.1.1-1_arm64.deb 302
 /pool/main/h/helium-bin/helium-bin_0.15.7.1-1_amd64.deb https://github.com/imputnet/helium-linux/releases/download/0.15.7.1/helium-bin_0.15.7.1-1_amd64.deb 302
 /pool/main/h/helium-bin/helium-bin_0.15.7.1-1_arm64.deb https://github.com/imputnet/helium-linux/releases/download/0.15.7.1/helium-bin_0.15.7.1-1_arm64.deb 302
-/pool/main/h/helium-bin/helium-bin_0.15.6.1-1_amd64.deb https://github.com/imputnet/helium-linux/releases/download/0.15.6.1/helium-bin_0.15.6.1-1_amd64.deb 302
-/pool/main/h/helium-bin/helium-bin_0.15.6.1-1_arm64.deb https://github.com/imputnet/helium-linux/releases/download/0.15.6.1/helium-bin_0.15.6.1-1_arm64.deb 302

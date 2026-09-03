@@ -1,17 +1,17 @@
 Package: helium-bin
-Version: 0.15.6.1-1
+Version: 0.16.4.1-1
 Section: web
 Priority: optional
 Architecture: arm64
-Installed-Size: 486302
+Installed-Size: 488811
 Maintainer: imput <helium@imput.net>
 Description: Private, fast, and honest web browser
  Private, fast, and honest web browser based on Chromium
 Homepage: https://github.com/imputnet/helium-linux
 Recommends: ca-certificates,xdg-utils,fonts-liberation,libvulkan1
 Provides: www-browser
-Filename: pool/main/h/helium-bin/helium-bin_0.15.6.1-1_arm64.deb
-Size: 123855440
-MD5sum: 11baaa2b8bf0d0c9dd675d2e8a40940e
-SHA1: 88259efe4d9bc06b09f4d97f6fe2945c487230aa
-SHA256: 380f7a7c11a8a3ab96b71632a6069cd41caf29b894e009a3baf644937e184c2e
+Filename: pool/main/h/helium-bin/helium-bin_0.16.4.1-1_arm64.deb
+Size: 124574428
+MD5sum: 6e195264af62a1222f37ceeab9a95b24
+SHA1: b82ab54bac6fbedbdea96633283a07931ccdb42a
+SHA256: d9e75644aaaaeebfd15a28c694724143826e596c04399be07dbf2087ec923eb6
