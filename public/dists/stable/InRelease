@@ -4,7 +4,7 @@ Hash: SHA512
 Architectures: amd64 arm64
 Codename: stable
 Components: main
-Date: Wed, 14 Oct 2026 12:18:05 +0000
+Date: Wed, 14 Oct 2026 18:14:55 +0000
 Description: Unofficial APT repository for Helium on Debian/Ubuntu
 Label: Helium Linux
 Origin: helium-linux-repo
@@ -31,8 +31,8 @@ SHA512:
  2ce72865ea173958814070abf818e641544d1a8da9d8d7c4e60bc94fb6b520ab35469215ab79bd8a1d064ab6bc448c406a43b3f9c36e3ce8b1e888befed0595b              905 main/binary-arm64/Packages.gz
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQR2OU9VKgeauHqlcxGGdS8zSia6MAUCas9y/QAKCRCGdS8zSia6
-MJTsAP9xvLrL9bH+mE6Wo9DmOWgPinIvGX2zk5MrMvstUHSLtAD/e3DGski0hubd
-JKyli3bi1RaGcxaFJeRrqTuOfEONPws=
-=LVop
+iHUEARYKAB0WIQR2OU9VKgeauHqlcxGGdS8zSia6MAUCas/GnwAKCRCGdS8zSia6
+MESWAP0W3nnmJedqZeUE7vkLgIb0PhchAhjA2Pfu+wX9OznxqwEAo2tS/sjNrkV8
+ikc/CUN2rXAEkJhqnQt+ldlZQBGOswI=
+=Chqa
 -----END PGP SIGNATURE-----
