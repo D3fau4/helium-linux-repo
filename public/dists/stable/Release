@@ -1,7 +1,7 @@
 Architectures: amd64 arm64
 Codename: stable
 Components: main
-Date: Mon, 26 Oct 2026 18:18:27 +0000
+Date: Tue, 27 Oct 2026 00:30:00 +0000
 Description: Unofficial APT repository for Helium on Debian/Ubuntu
 Label: Helium Linux
 Origin: helium-linux-repo
