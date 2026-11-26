@@ -1,28 +1,28 @@
 Architectures: amd64 arm64
 Codename: stable
 Components: main
-Date: Wed, 25 Nov 2026 18:08:51 +0000
+Date: Thu, 26 Nov 2026 00:19:23 +0000
 Description: Unofficial APT repository for Helium on Debian/Ubuntu
 Label: Helium Linux
 Origin: helium-linux-repo
 Suite: stable
 MD5Sum:
- 95826da6f68f19e0720fd76835d12d2e             7389 main/binary-amd64/Packages
- 4ef3111da9c66cc3750d5a3e67ffb7df             1350 main/binary-amd64/Packages.gz
- f5cec8bfcb64e06a7948aa6c98953a2c             3209 main/binary-arm64/Packages
- 40fe80c4e548113811d6b8712f3a37de              889 main/binary-arm64/Packages.gz
+ a34ba6de0c556903e6d9107b3d19539d             7389 main/binary-amd64/Packages
+ 17bdaa3c5bf29c8214de8a6ee96c67a2             1348 main/binary-amd64/Packages.gz
+ c52db47a6e96b52b6667ad7d8013ec03             3209 main/binary-arm64/Packages
+ f05533977ceb7f64e3b19e3a06022de6              888 main/binary-arm64/Packages.gz
 SHA1:
- 787199b115aba1c9d41422b054be53c0bc223dfb             7389 main/binary-amd64/Packages
- dc58d064b618d17a35878edef4d51ede2b8aa485             1350 main/binary-amd64/Packages.gz
- 87937e2a9c402a01ddb6adc4394eea09ef8a2c37             3209 main/binary-arm64/Packages
- 255f6f6a0995d2c92fe95739cfd22c113d7e9cfd              889 main/binary-arm64/Packages.gz
+ 6465eb7b5f240c41a518b43371b92c4938f01fd4             7389 main/binary-amd64/Packages
+ 5568650780d2be0161e4ee7ae458b121e5a7945a             1348 main/binary-amd64/Packages.gz
+ 017886e3b4d1d17871886fcd49e66a89c11747ea             3209 main/binary-arm64/Packages
+ a0eacd7ecc9ef1cece9b4e4162685c51b79638bf              888 main/binary-arm64/Packages.gz
 SHA256:
- 759f6d36c0cff29d1d88e189399003accd3de12b627c17a9a14ff0898dc54282             7389 main/binary-amd64/Packages
- d7a565aa28b655882bf8f89b51bb5416d5d71b436b534642f3e2a3be4726f25d             1350 main/binary-amd64/Packages.gz
- 9b3be8e2a0b3787f4a944cabfc5313b1b39f7a5794f12df2be42cc980fcae37d             3209 main/binary-arm64/Packages
- bc9557f1ed71a73302a3baff83f1139f888f4b0289db7bf23e51070882880fce              889 main/binary-arm64/Packages.gz
+ 4b11e2ba8e4071d178112b2717f8f6609edad95e71dc8d5824cec5834c1d15cd             7389 main/binary-amd64/Packages
+ 012a98117d6cd209b6a2ae9457a1c5963b72ed6458f08d9b784e1e52266924c8             1348 main/binary-amd64/Packages.gz
+ 453bd0f7e9a8d9d5c9ba3f1ea160a6e6a4a7f64a179d0e256cf5d55b432909c8             3209 main/binary-arm64/Packages
+ cd34eff7e6da703b316be4d676f75949f56cc53b97c6d70b4a9e3a72fc972bff              888 main/binary-arm64/Packages.gz
 SHA512:
- 68aa10cfa638896e5876b3ef21a6533127e31e05433c43f483a875d7d974ca1907c537abfb223c911a1b1858e2949a972a3185c8e6254c56ef74ecb948101066             7389 main/binary-amd64/Packages
- 71d6077a87c4dd7387d0c64d4bc02161281db952f14bbba73d72bc357715a8a797ef687d566f22e163d0f7ad23dd8bf77b1f45685fc67ba2b45ed45b57777af8             1350 main/binary-amd64/Packages.gz
- dfc99b56f5fb76de73358323073790dcafb3bae22da62db66a9e99c698d3191124e8ad2aadc0178d1f694666801c3e302ea901f4ea390359c30b55dd6474957f             3209 main/binary-arm64/Packages
- 2a8ade386fed017e2cf6997b13887633785d888949c9cd6301a60be4e17d8f5a9ea507249ce59040dfe998142740c8333f44fa8e209cfa3453ef7396a56516ad              889 main/binary-arm64/Packages.gz
+ 5ac5c0dfcd2934f2ecddd0db2dcb67ac446555d7497a006a929683029642ca898e476bc7be0c08149fe4738450ded8e23adbef3f1ea9cb7d3329a42ea2fce1ee             7389 main/binary-amd64/Packages
+ 8635316f7fced4efb5658569fbefe314d1ba671a8ea34f14482b5bf357f4adcb0339568780b711c626e3f81cdab18e6b14ad8d08e3ee2dbfa06b5aa9d2539f9f             1348 main/binary-amd64/Packages.gz
+ ec82abcc08f68bc1b9bd8b42c328ac9f1e42c6a6e13e4645bc1e95e9bfeb9ee1100bd859c1a6c1cc04975b81522b9529cc64cbbff0294db892d10c35006ed16d             3209 main/binary-arm64/Packages
+ d2d7d4061a08de8a19c75b8ee2a7bb7cbd133d3d18d7063f530f15af36459697ca826dad106c390e2c48a7027ee9c9eb912ec21013f735145f47666bda943faf              888 main/binary-arm64/Packages.gz
